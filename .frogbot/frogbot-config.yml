@@ -1,4 +1,5 @@
-git:
-  repoName: spring-petcinic
-  branches:
-    - main
+- params:
+    git:
+      repoName: spring-petclinic
+      branches:
+        - main
