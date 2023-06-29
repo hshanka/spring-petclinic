@@ -127,6 +127,8 @@ COPY src ./src
 CMD ["./mvnw", "spring-boot:run"]
 
 ```
+I also added a .dockerignore to exclude the target/ directory from being included during docker image creation.
+
 I built the docker image using the following command in the project's root directory:
 
 ```
@@ -145,7 +147,9 @@ During startup, I verified that all dependencies were resolving from JCenter:
 <img width="1155" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/32ac7e1e-02d7-4b94-99d8-e45fe1bbc5bc">
 
 
-## Installing Jenkins
+## Automation with Jenkins
+
+### Installing Jenkins
 
 Next, I installed a local Jenkins instance using homebrew:
 
@@ -167,7 +171,7 @@ c) Github
 I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Congigurations.
 
 
-## Authoring the Jenkinsfile
+### Authoring the Jenkinsfile
 I created a Jenkinsfile with the following contents:
 ```
 pipeline {
@@ -251,11 +255,20 @@ Once Xray scans complete, I publish the docker image to Artifactory using,
 // Push image to Artifactory
 jf 'docker push $DOCKER_IMAGE_NAME'
 ```
+I use the build number as the automatic version number for each subsequent image build and publish. 
+Builds are visible in Artifactory within my JFrog account:
+
+<img width="1465" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/99e10359-1947-453c-b80c-e983b77992ca">
 
 
-## Test Applications
+# Deliverables
 
-At development time we recommend you use the test applications set up as `main()` methods in `PetClinicIntegrationTests` (using the default H2 database and also adding Spring Boot devtools), `MySqlTestApplication` and `PostgresIntegrationTests`. These are set up so that you can run the apps in your IDE and get fast feedback, and also run the same classes as integration tests against the respective database. The MySql integration tests use Testcontainers to start the database in a Docker container, and the Postgres tests use Docker Compose to do the same thing.
+### 1. Jenkinsfile
+This is available in the root of this repo at: https://github.com/hshanka/spring-petclinic/blob/main/Jenkinsfile
+
+### 2. Dockerfile
+This is available in the root of this repo at: https://github.com/hshanka/spring-petclinic/blob/main/Dockerfile
+
 
 ## Compiling the CSS
 
