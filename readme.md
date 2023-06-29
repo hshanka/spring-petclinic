@@ -13,14 +13,13 @@ e) Added steps to the Jenkinsfile to publish the docker image to Artifactory (bo
 
 f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray (bonus item)
 
-I verified that the application was available at http://localhost:8080/
-
 
 
 ## Detailed description of steps executed to complete the exercise
 
 Once the application was forked, I cloned the repo locally to build and test the project. I executed. the following commands. todo so:
 
+```
 git clone https://github.com/spring-projects/spring-petclinic.git
 
 cd spring-petclinic
@@ -28,18 +27,107 @@ cd spring-petclinic
 ./mvnw package
 
 java -jar target/*.jar
+```
 
+I verified that the application was available at http://localhost:8080/. 
 
-## Running petclinic locally
-Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/) or [Gradle](https://spring.io/guides/gs/gradle/). You can build a jar file and run it from the command line (it should work just as well with Java 17 or newer):
+## Updating repos to point to JCenter:
+I made the following changes to pom.xml:
 
+**Removed:**
+```
+  <repositories>
+    <repository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://repo.spring.io/snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+   <pluginRepositories>
+    <pluginRepository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://repo.spring.io/snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
 ```
-git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic
-./mvnw package
-java -jar target/*.jar
+
+**Added:**
 ```
+<repositories>
+   <repository>
+        <id>jcenter</id>
+        <name>jcenter</name>
+        <url>https://jcenter.bintray.com</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>https://jcenter.bintray.com</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+       <url>https://jcenter.bintray.com</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+```
+
+## Containerizing the Spring-Petclinic application
+
+My next step was to continerize the application. In order. todo so, I added a Dockerfile to the prject with. thecontents below:
+
+```
+# syntax=docker/dockerfile:1
+
+FROM eclipse-temurin:17-jdk-jammy
+
+WORKDIR /app
+
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
+
+COPY src ./src
+
+CMD ["./mvnw", "spring-boot:run"]
+
+```
+
 
 You can then access petclinic at http://localhost:8080/
 
