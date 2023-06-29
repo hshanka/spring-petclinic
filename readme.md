@@ -15,7 +15,7 @@ f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray (b
 
 
 
-## Detailed description of steps executed to complete the exercise
+# Detailed description of steps executed to complete the exercise
 
 Once the application was forked, I cloned the repo locally to build and test the project. I executed. the following commands. todo so:
 
