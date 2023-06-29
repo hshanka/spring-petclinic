@@ -224,7 +224,7 @@ pipeline {
 ```
 As seen above, the script checks out the code from my repo, compiles, runs the tests and attempts to build the package. If these steps succeed, the script builds a docker image using the Dockerfile I created and placed at the root of the project.
 
-### Configuring Jenkins
+### Configuring Jenkins And Runnning The Pipeline
 I pushed the updates into Github, and configured my Jenkins pipeline to point to this github project.
 <img width="1211" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/368f5e7c-716d-4505-9aaa-eff63999fb88">
 
@@ -332,4 +332,14 @@ I experienced the following runtime error:
 
 The frogbot pull requests worked file. I ended up removing frogbot from my Jenkinsfile since I was directly running the vulnerability scan using the jf commandline and Xray.
 
+# Real-World Enhancement Ideas
+
+### 1. Kick of Jenkins job on code commit
+Instead of kicking off builds manually, we would want to trigger teh Jenkins pipeline oneach code commit.
+
+### 2. Email build results to DevSecOps teams
+This provides immediate visibility to important items like vulnerability scanresults so the team can prioritize and expedite remediation.
+
+### 3. Push results into an SRE observability dashboard
+If DevOps/SRE teams use an observabililty solution like Grafana, Chronosphere or others, push the build logs and metrics into these solutions for immeediate visibility and actionability.
 
