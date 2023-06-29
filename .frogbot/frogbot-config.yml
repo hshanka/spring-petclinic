@@ -1,0 +1,8 @@
+projects:
+  - name: spring-petclinic
+    repository: https://github.com/hshanka/spring-petclinic.git
+    branch: main
+    build_command: mvn clean package
+    test_command: mvn test
+    deploy_command: |
+      java -jar target/*.jar
