@@ -1,12 +1,34 @@
-# Hari's Spring PetClinic Application [![Build Status](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml)
+# Hari's Spring PetClinic Application
+This project is a fork of the Spring Petclinic application provided as part of the exercise. This readme describes the changes made to this project in order to meet the exercise requirements. Specifically, the following tasks were accomplished:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spring-projects/spring-petclinic) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=7517918)
+a) Forked Spring-Petclinic project from https://github.com/spring-projects/spring-petclinic
+
+b) Added a Dockerfile with steps to build the docker image
+
+c) Modified pom.xml to point to JCenter. Ensured all dependencies are resolving from JCenter
+
+d) Added a Jenkinsfile to the project to compile the code, run the tests and package the application into a docker image
+
+e) Added steps to the Jenkinsfile to publish the docker image to Artifactory (bonus item)
+
+f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray (bonus item)
+
+I verified that the application was available at http://localhost:8080/
 
 
 
+## Detailed description of steps executed to complete the exercise
 
-## Understanding the Spring Petclinic application with a few diagrams
-<a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
+Once the application was forked, I cloned the repo locally to build and test the project. I executed. the following commands. todo so:
+
+git clone https://github.com/spring-projects/spring-petclinic.git
+
+cd spring-petclinic
+
+./mvnw package
+
+java -jar target/*.jar
+
 
 ## Running petclinic locally
 Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/) or [Gradle](https://spring.io/guides/gs/gradle/). You can build a jar file and run it from the command line (it should work just as well with Java 17 or newer):
