@@ -8,7 +8,7 @@ pipeline {
     } 
     
     environment {
-		DOCKER_IMAGE_NAME = "hshanka.jfrog.io/frog-docker/spring-petclinic-hs:2.0.0"
+		DOCKER_IMAGE_NAME = "hshanka.jfrog.io/frog-docker/spring-petclinic-hs:BUILD_NUMBER"
 	}
     
     stages {
