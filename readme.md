@@ -168,10 +168,60 @@ I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Congigu
 
 
 ## Authoring the Jenkinsfile
-Our issue tracker is available [here](https://github.com/spring-projects/spring-petclinic/issues)
+I created a Jenkinsfile with the following contents:
+```
+pipeline {
+   
+    agent any
+    
+    tools {
+        maven 'maven'
+        jfrog 'jfrog-cli'
+    } 
+    
+    environment {
+		DOCKER_IMAGE_NAME = "hshanka.jfrog.io/frog-docker/spring-petclinic-hs:$BUILD_NUMBER"
+	}
+    
+    stages {
+       stage('Cloning Git') {
+         steps {
+             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '1915d014-8308-45ab-bec7-bb5c7bb2a0e1', url: 'https://github.com/hshanka/spring-petclinic.git']])
+            }
+        }
+        
+    stage('Compile Code, Run Tests, Build App') {
+            steps {
+                sh 'mvn clean package'
+            }
+        } 
+    stage('Build Docker Image') {
+            steps {
+                 script {
+                    def dockerImage = docker.build("$DOCKER_IMAGE_NAME", '-f Dockerfile .')
+                }
+            }
+        } 
+        
+    stage('Scan and push image') {
+			steps {
+			
+					// Scan Docker image for vulnerabilities
+					jf 'docker scan $DOCKER_IMAGE_NAME'
 
+					// Push image to Artifactory
+					jf 'docker push $DOCKER_IMAGE_NAME'
+				
+			}
+		}
 
-## Database configuration
+    }
+}
+```
+
+As seen above, the script checks out the code from my repo, compiles, runs the tests and attempts to build the package. If these steps succeed, the script builds a docker image using the Dockerfile I created and placed at the root of the project.
+
+## Scanning for security vulnerabilities
 
 In its default configuration, Petclinic uses an in-memory database (H2) which
 gets populated at startup with data. The h2 console is exposed at `http://localhost:8080/h2-console`,
