@@ -208,16 +208,16 @@ pipeline {
         } 
         
     stage('Scan and push image') {
-			steps {
-			
-					// Scan Docker image for vulnerabilities
-					jf 'docker scan $DOCKER_IMAGE_NAME'
+        steps {
+        
+                        // Scan Docker image for vulnerabilities
+                        jf 'docker scan $DOCKER_IMAGE_NAME'
 
-					// Push image to Artifactory
-					jf 'docker push $DOCKER_IMAGE_NAME'
-				
-			}
-		}
+                        // Push image to Artifactory
+                        jf 'docker push $DOCKER_IMAGE_NAME'
+                
+                }
+        }
 
     }
 }
@@ -294,5 +294,35 @@ Access http://localhost:8086/ to verify that the application came up successfull
 
 <img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
 
-# Issues encountered during the course of the exercise and resolutions
+# Issues encountered and resolutions
+### 1. Jenkins server not finding my local docker despite configuring Manage Plugins --> Tools.
+I resolved this by editing 
+```
+/opt/homebrew/Cellar/jenkins-lts/2.401.1/homebrew.mxcl.jenkins-lts.plist
+```
+to add,
+```
+<dict>
+<key>PATH</key>
+<string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Docker.app/Contents/Resources/bin/:/Users/hyadav23/Library/Group\ Containers/group.com.docker/Applications/Docker.app/Contents/Resources/bin</string>
+</dict>
+```
+### 2. Port conflicts while running tests for MySQL and PostgreSQL
+Shut down locally running databases, killed hanging processes.
+
+### 3. Running into runtime error while using Frogbot
+While running the following stage,
+```
+ stage('Scan and Fix Repos') {
+  steps {
+      sh "./frogbot scan-and-fix-repos"
+      // For Windows runner:
+      // powershell """.\frogbot.exe scan-and-fix-repos"""
+  }    
+```
+I experienced the following runtime error:
+<img width="1079" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/2ee651b0-a1e9-41a2-90f6-794e818d174b">
+
+The frogbot pull requests worked file. I ended up removing frogbot from my Jenkinsfile since I was directly running the vulnerability scan using the jf commandline and Xray.
+
 
