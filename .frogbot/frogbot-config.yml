@@ -1,0 +1,5 @@
+- params:
+    git:
+      repoName: spring-petclinic
+      branches:
+        - main
