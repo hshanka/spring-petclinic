@@ -109,7 +109,7 @@ I made the following changes to pom.xml:
 
 ## Containerizing the Spring-Petclinic application
 
-My next step was to continerize the application. In order. todo so, I added a Dockerfile to the prject with. thecontents below:
+My next step was to continerize the application. In order to do so, I added a Dockerfile to the prject with the contents below:
 
 ```
 # syntax=docker/dockerfile:1
@@ -127,21 +127,37 @@ COPY src ./src
 CMD ["./mvnw", "spring-boot:run"]
 
 ```
-
-
-You can then access petclinic at http://localhost:8080/
-
-<img width="1042" alt="petclinic-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
-
-Or you can run it from Maven directly using the Spring Boot Maven plugin. If you do this, it will pick up changes that you make in the project immediately (changes to Java source files require a compile as well - most people use an IDE for this):
+I built the docker image using the following command in the project's root directory:
 
 ```
-./mvnw spring-boot:run
+docker build --tag spring-petclinic-hs .
+
 ```
 
-> NOTE: If you prefer to use Gradle, you can build the app using `./gradlew build` and look for the jar file in `build/libs`.
+I ran the image as a container locally using the command:
 
-## Building a Container
+```
+docker run --publish 8080:8080 spring-petclinic-hs
+```
+
+During startup, I verified that all dependencies were resolving from JCenter:
+
+<img width="1155" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/32ac7e1e-02d7-4b94-99d8-e45fe1bbc5bc">
+
+
+## Using Jenkins
+
+Next, I installed a local Jenkins instance using homebrew:
+
+````
+ brew install jenkins-lts
+
+```
+I started the Jenkins server using:
+```
+brew services start jenkins-lts
+
+```
 
 There is no `Dockerfile` in this project. You can build a container image (if you have a docker daemon) using the Spring Boot build plugin:
 
