@@ -221,40 +221,37 @@ pipeline {
 
 As seen above, the script checks out the code from my repo, compiles, runs the tests and attempts to build the package. If these steps succeed, the script builds a docker image using the Dockerfile I created and placed at the root of the project.
 
-## Scanning for security vulnerabilities
-
-In its default configuration, Petclinic uses an in-memory database (H2) which
-gets populated at startup with data. The h2 console is exposed at `http://localhost:8080/h2-console`,
-and it is possible to inspect the content of the database using the `jdbc:h2:mem:testdb` url.
- 
-A similar setup is provided for MySQL and PostgreSQL if a persistent database configuration is needed. Note that whenever the database type changes, the app needs to run with a different profile: `spring.profiles.active=mysql` for MySQL or `spring.profiles.active=postgres` for PostgreSQL.
-
-You can start MySQL or PostgreSQL locally with whatever installer works for your OS or use docker:
+## Scanning for security vulnerabilities (Bonus Task)
+After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
 
 ```
-docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 mysql:8.0
+// Scan Docker image for vulnerabilities
+jf 'docker scan $DOCKER_IMAGE_NAME'
+```
+The scan report is output on my Jenkins job conole during builds:
+
+<img width="1107" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/7d77a72c-812f-4a14-8183-f6b56675024b">
+
+The Xray scan results are also available within the Xray section within my JFrog trial account.
+
+<img width="1411" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/bc930b95-770b-4ab5-8994-39f4c131328a">
+
+<img width="1463" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/e8b792da-de4f-4086-8181-f9ef31e51126">
+
+<img width="1462" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/bf76bb02-f43e-4a02-b561-9ce9cefacb41">
+
+<img width="1458" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/45bee72d-cf08-41a4-81d4-777664af06a2">
+
+
+
+## Publishing Docker image to JFrog Artifactory (Bonus Task)
+
+Once Xray scans complete, I publish the docker image to Artifactory using,
+```
+// Push image to Artifactory
+jf 'docker push $DOCKER_IMAGE_NAME'
 ```
 
-or
-
-```
-docker run -e POSTGRES_USER=petclinic -e POSTGRES_PASSWORD=petclinic -e POSTGRES_DB=petclinic -p 5432:5432 postgres:15.2
-```
-
-Further documentation is provided for [MySQL](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources/db/mysql/petclinic_db_setup_mysql.txt)
-and for [PostgreSQL](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources/db/postgres/petclinic_db_setup_postgres.txt).
-
-Instead of vanilla `docker` you can also use the provided `docker-compose.yml` file to start the database containers. Each one has a profile just like the Spring profile:
-
-```
-$ docker-compose --profile mysql up
-```
-
-or
-
-```
-$ docker-compose --profile postgres up
-```
 
 ## Test Applications
 
