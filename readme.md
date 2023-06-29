@@ -222,8 +222,15 @@ pipeline {
     }
 }
 ```
-
 As seen above, the script checks out the code from my repo, compiles, runs the tests and attempts to build the package. If these steps succeed, the script builds a docker image using the Dockerfile I created and placed at the root of the project.
+
+### Configuring Jenkins
+I pushed the updates into Github, and configured my Jenkins pipeline to point to this github project.
+<img width="1211" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/368f5e7c-716d-4505-9aaa-eff63999fb88">
+
+And ran the build manually.
+<img width="1059" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/087e245c-d0e0-4333-b41e-82624af24dac">
+
 
 ## Scanning for security vulnerabilities (Bonus Task)
 After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
