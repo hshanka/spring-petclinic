@@ -145,11 +145,11 @@ During startup, I verified that all dependencies were resolving from JCenter:
 <img width="1155" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/32ac7e1e-02d7-4b94-99d8-e45fe1bbc5bc">
 
 
-## Using Jenkins
+## Installing Jenkins
 
 Next, I installed a local Jenkins instance using homebrew:
 
-````
+```
  brew install jenkins-lts
 
 ```
@@ -159,13 +159,15 @@ brew services start jenkins-lts
 
 ```
 
-There is no `Dockerfile` in this project. You can build a container image (if you have a docker daemon) using the Spring Boot build plugin:
+I then installed the following plugins into my Jenkins server:
+a) JFrog 
+b) Docker Pipeilne
+c) Github 
 
-```
-./mvnw spring-boot:build-image
-```
+I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Congigurations.
 
-## In case you find a bug/suggested improvement for Spring Petclinic
+
+## Authoring the Jenkinsfile
 Our issue tracker is available [here](https://github.com/spring-projects/spring-petclinic/issues)
 
 
