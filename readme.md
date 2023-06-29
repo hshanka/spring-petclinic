@@ -285,4 +285,14 @@ You should see it in the list of your local images as seen below:
 
 
 Run the container from the image using:
+```
+docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
+(Change 8086 to an avaialble port on your local machine if that port is taken.)
+```
+
+Access http://localhost:8086/ to verify that the application came up successfully. 
+
+<img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
+
+# Issues encountered during the course of the exercise and resolutions
 
