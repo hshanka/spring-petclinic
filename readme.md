@@ -44,14 +44,18 @@ docker load < hs-springpetclinic.tar
 
 #### Once the image is available locally, proceed with the steps below to run the container.
 
+Verify that the image is available in your list of local docker images:
+
 ```
 docker images
 ```
-You should see it in the list of your local images as seen below:
+
+You should see ```hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9``` in the list of your local images as seen below:
 <img width="889" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/2604cf63-edef-4b13-95f7-d3363c0f1cd2">
 
 
-Run the container from the image using:
+Now run the container from the image using:
+
 ```
 docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
 (Change 8086 to an avaialble port on your local machine if that port is taken.)
@@ -61,7 +65,7 @@ Access http://localhost:8086/ to verify that the application came up successfull
 
 <img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
 
-### 4. Recommendations and implementations of security within the pipeline
+### 4. Slides covering the implementation and additional recommendations for security within the pipeline
 Please see [here.](https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xseXkofG8vAPbUrTmvsnBY3BLgs4/edit?usp=sharing)
 
 
