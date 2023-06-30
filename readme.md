@@ -24,12 +24,26 @@ This is available in the root of this repo at: https://github.com/hshanka/spring
 
 
 ### 3. Runnable Docker image:
+
+#### Option A: Downloading From Artifactory
+I added Marcus, Danh and Niecolle to my JFrog instance so you are able to pull the image from my Artifactory repo.
+
 Pull the docker image from Artifactory using:
 ```
 docker pull hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9  
 ```
+#### Option B: Download From Google Drive
+The downloadable tar is also available on my [Google Drive](https://drive.google.com/drive/folders/1qJOGdtAxKLZEx7xKAjEkht9ceJTE_5h-?usp=sharing)
 
-Verify that the image pulled successfully using:
+Additionally, the image has been uploaded to the link provided via Greenhouse.
+
+After downloading the image, execute the following command to load the docker image from the tar into your local images list.
+```
+docker load < hs-springpetclinic.tar
+```
+
+#### Once the image is available locally, proceed with the steps below to run the container.
+
 ```
 docker images
 ```
