@@ -295,7 +295,7 @@ In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager
 <img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
 
 ### 5c. Additional approaches to adding security to Jenkins pipeline
-Please see [this deck] (https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xseXkofG8vAPbUrTmvsnBY3BLgs4/edit?usp=sharing) for additional approaches that I would implement to further secure this pipeline.
+Please see [this deck](https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xseXkofG8vAPbUrTmvsnBY3BLgs4/edit?usp=sharing) for additional approaches that I would implement to further secure this pipeline.
 
 
 ## 6. Publishing Docker image to JFrog Artifactory (Bonus Task)
