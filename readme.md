@@ -337,7 +337,7 @@ I installed the SonarQube scanner plugin into my Jenkins environment.
 
 Incorporated the scanner into my Jenkins pipeline. Static Code analysis results were published to my local SonarQube server.
 
-<img width="1443" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/d4f4a6ac-316f-4890-9187-33f8b3fd5269">
+<img width="1463" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f10ea967-a011-4aa2-b4c2-02aa7b7e971b">
 
 <img width="1459" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/18905a1c-5dbd-4587-86a3-7dd59b2a3ecd">
 
