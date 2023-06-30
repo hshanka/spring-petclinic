@@ -290,9 +290,15 @@ The Xray scan results are also available within the Xray section within my JFrog
 
 <img width="1458" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/45bee72d-cf08-41a4-81d4-777664af06a2">
 
-### 5b. Using Jenkins Credentials Management
-In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager to store the JF_ACCESS_TOKEN and the Github token.
-<img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
+### 5b. Static Code Analysis Using SonarQube
+Installed the SonarQube scanner plugin into my Jenkins environment.
+![image](https://github.com/hshanka/spring-petclinic/assets/6666290/8ef33741-f855-46db-ab1c-f3ba1a4bebac)
+
+Incorporated the scanner into my Jenkins pipeline. Static Code analysis results were published to my local SonarQube server.
+<img width="1443" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/d4f4a6ac-316f-4890-9187-33f8b3fd5269">
+
+<img width="1459" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/18905a1c-5dbd-4587-86a3-7dd59b2a3ecd">
+
 
 ### 5c. Additional approaches to adding security to Jenkins pipeline
 Please see [this deck](https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xseXkofG8vAPbUrTmvsnBY3BLgs4/edit?usp=sharing) for additional approaches that I would implement to further secure this pipeline.
