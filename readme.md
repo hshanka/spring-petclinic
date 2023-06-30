@@ -231,7 +231,7 @@ a) JFrog
 b) Docker Pipeilne
 c) Github 
 
-I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Congigurations.
+I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Configurations.
 
 
 ### 4b. Authoring the Jenkinsfile
