@@ -67,7 +67,7 @@ Now run the container:
 ```
 docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
 ```
-(Change 8086 to an avaialble port on your local machine if that port is taken.)
+(Change 8086 to an available port on your local machine if that port is taken.)
 
 Access http://localhost:8086/ to verify that the application came up successfully. 
 
@@ -172,7 +172,7 @@ I made the following changes to pom.xml:
 
 ## 3. Containerizing the Spring-Petclinic application
 
-My next step was to containerize the application. In order to do so, I added a Dockerfile to the prject with the contents below:
+My next step was to containerize the application. In order to do so, I added a Dockerfile to the project with the contents below:
 
 ```
 # syntax=docker/dockerfile:1
@@ -228,7 +228,7 @@ brew services start jenkins-lts
 
 I then installed the following plugins into my Jenkins server:
 a) JFrog 
-b) Docker Pipeilne
+b) Docker Pipeline
 c) Github 
 
 I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Configurations.
@@ -297,7 +297,7 @@ pipeline {
 ```
 As seen above, the script checks out the code from my repo, compiles, runs the tests and attempts to build the package. If these steps succeed, the script builds a docker image using the Dockerfile I created and placed at the root of the project.
 
-### 4c. Configuring Jenkins And Runnning The Pipeline
+### 4c. Configuring Jenkins And Running The Pipeline
 I pushed the updates into Github, and configured my Jenkins pipeline to point to this github project.
 <img width="1211" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/368f5e7c-716d-4505-9aaa-eff63999fb88">
 
@@ -314,7 +314,7 @@ After the docker image is built, I scan for vulnerabilities using JFrog Xray wit
 // Scan Docker image for vulnerabilities
 jf 'docker scan $DOCKER_IMAGE_NAME'
 ```
-The Xray scan report is output on my Jenkins job conole during builds:
+The Xray scan report is output on my Jenkins job console during builds:
 
 <img width="1107" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/7d77a72c-812f-4a14-8183-f6b56675024b">
 
@@ -397,8 +397,8 @@ I ended up removing frogbot from my Jenkinsfile since I was directly running the
 Instead of kicking off builds manually, we would want to trigger the Jenkins pipeline on each code commit.
 
 ### 2. Email build results to DevSecOps teams
-This provides immediate visibility to important items like vulnerability scanresults so the team can prioritize and expedite remediation.
+This provides immediate visibility to important items like vulnerability scan results so the team can prioritize and expedite remediation.
 
 ### 3. Push results into an SRE observability dashboard
-If DevOps/SRE teams use an observabililty solution like Grafana, Chronosphere or others, push the build logs and metrics into these solutions for immeediate visibility and actionability.
+If DevOps/SRE teams use an observability solution like Grafana, Chronosphere or others, push the build logs and metrics into these solutions for immediate visibility and actionability.
 
