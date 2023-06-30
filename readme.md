@@ -231,7 +231,7 @@ I pushed the updates into Github, and configured my Jenkins pipeline to point to
 And ran the build manually.
 <img width="1059" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/087e245c-d0e0-4333-b41e-82624af24dac">
 
-## 4. Securing the Jenkins Pipeline (Bonus Task)
+## 4. Adding Security to Jenkins Pipeline (Bonus Task)
 #### 4a. Scanning for security vulnerabilities 
 After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
 
@@ -256,6 +256,11 @@ The Xray scan results are also available within the Xray section within my JFrog
 ### 4b. Using Jenkins Credentials Management
 In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager to store the JF_ACCESS_TOKEN and the Github token.
 <img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
+
+### 4c. Additional approaches to adding security to Jenkins pipeline
+
+1. Enabling the Groovy Sandbox
+2. Using distributed builds
 
 
 ## 5. Publishing Docker image to JFrog Artifactory (Bonus Task)
