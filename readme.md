@@ -258,7 +258,6 @@ In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager
 <img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
 
 
-
 ## 5. Publishing Docker image to JFrog Artifactory (Bonus Task)
 
 Once Xray scans complete, I publish the docker image to Artifactory using,
