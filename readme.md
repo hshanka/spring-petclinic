@@ -37,7 +37,7 @@ docker pull hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
 #### Option B: Download From Google Drive
 The downloadable tar is also available on my [Google Drive](https://drive.google.com/drive/folders/1qJOGdtAxKLZEx7xKAjEkht9ceJTE_5h-?usp=sharing)
 
-#### Option B: Download Via Greenhouse
+#### Option C: Download Via Greenhouse
 Additionally, the image has been uploaded to the link provided via Greenhouse.
 
 After downloading the image, execute the following command to load the docker image from the tar into your local images list.
