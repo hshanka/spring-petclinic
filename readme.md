@@ -50,7 +50,7 @@ After downloading the image, execute the following command to load the docker im
 docker load < hs-springpetclinic.tar
 ```
 
-#### Once the image is available locally, proceed with the steps below to run the container.
+#### After loading the image, proceed with the steps below to run the container.
 
 Verify that the image is available in your list of local docker images:
 
