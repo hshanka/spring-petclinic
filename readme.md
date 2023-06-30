@@ -231,8 +231,8 @@ I pushed the updates into Github, and configured my Jenkins pipeline to point to
 And ran the build manually.
 <img width="1059" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/087e245c-d0e0-4333-b41e-82624af24dac">
 
-
-## Scanning for security vulnerabilities (Bonus Task)
+## Securing the Jenkins Pipeline
+### Scanning for security vulnerabilities (Bonus Task)
 After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
 
 ```
@@ -252,6 +252,10 @@ The Xray scan results are also available within the Xray section within my JFrog
 <img width="1462" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/bf76bb02-f43e-4a02-b561-9ce9cefacb41">
 
 <img width="1458" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/45bee72d-cf08-41a4-81d4-777664af06a2">
+
+### Using Jenkins Credentials Management
+In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager to store the JF_ACCESS_TOKEN and the Github token.
+<img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
 
 
 
