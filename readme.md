@@ -304,33 +304,39 @@ I pushed the updates into Github, and configured my Jenkins pipeline to point to
 And ran the build manually.
 <img width="1059" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/087e245c-d0e0-4333-b41e-82624af24dac">
 
+
 ## 5. Adding Security to Jenkins Pipeline (Bonus Task)
+
 #### 5a. Scanning for security vulnerabilities 
-After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
+After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile.
 
 ```
 // Scan Docker image for vulnerabilities
 jf 'docker scan $DOCKER_IMAGE_NAME'
 ```
-The scan report is output on my Jenkins job conole during builds:
+The Xray scan report is output on my Jenkins job conole during builds:
 
 <img width="1107" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/7d77a72c-812f-4a14-8183-f6b56675024b">
 
-The Xray scan results are also available within the Xray section within my JFrog trial account.
+The scan results are also available within the Xray section within my JFrog account.
 
 <img width="1411" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/bc930b95-770b-4ab5-8994-39f4c131328a">
 
+
 <img width="1463" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/e8b792da-de4f-4086-8181-f9ef31e51126">
 
+
 <img width="1462" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/bf76bb02-f43e-4a02-b561-9ce9cefacb41">
+
 
 <img width="1458" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/45bee72d-cf08-41a4-81d4-777664af06a2">
 
 ### 5b. Static Code Analysis Using SonarQube
-Installed the SonarQube scanner plugin into my Jenkins environment.
+I installed the SonarQube scanner plugin into my Jenkins environment.
 ![image](https://github.com/hshanka/spring-petclinic/assets/6666290/8ef33741-f855-46db-ab1c-f3ba1a4bebac)
 
 Incorporated the scanner into my Jenkins pipeline. Static Code analysis results were published to my local SonarQube server.
+
 <img width="1443" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/d4f4a6ac-316f-4890-9187-33f8b3fd5269">
 
 <img width="1459" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/18905a1c-5dbd-4587-86a3-7dd59b2a3ecd">
@@ -342,12 +348,12 @@ Please see [this deck](https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xs
 
 ## 6. Publishing Docker image to JFrog Artifactory (Bonus Task)
 
-Once Xray scans complete, I publish the docker image to Artifactory using,
+Once Xray scans complete, I published the docker image to Artifactory.
 ```
 // Push image to Artifactory
 jf 'docker push $DOCKER_IMAGE_NAME'
 ```
-I use the build number as the automatic version number for each subsequent image build and publish. 
+I used the build number for automatic version update for each subsequent docker image build and publish. 
 Builds are visible in Artifactory within my JFrog account:
 
 <img width="1465" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/99e10359-1947-453c-b80c-e983b77992ca">
@@ -382,12 +388,13 @@ While running the following stage,
 I experienced the following runtime error:
 <img width="1079" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/2ee651b0-a1e9-41a2-90f6-794e818d174b">
 
-The frogbot pull requests worked file. I ended up removing frogbot from my Jenkinsfile since I was directly running the vulnerability scan using the jf commandline and Xray.
+I ended up removing frogbot from my Jenkinsfile since I was directly running the vulnerability scan using the jf commandline and Xray.
+
 
 # Real-World Enhancement Ideas
 
 ### 1. Kick of Jenkins job on code commit
-Instead of kicking off builds manually, we would want to trigger teh Jenkins pipeline oneach code commit.
+Instead of kicking off builds manually, we would want to trigger the Jenkins pipeline on each code commit.
 
 ### 2. Email build results to DevSecOps teams
 This provides immediate visibility to important items like vulnerability scanresults so the team can prioritize and expedite remediation.
