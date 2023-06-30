@@ -172,7 +172,7 @@ I made the following changes to pom.xml:
 
 ## 3. Containerizing the Spring-Petclinic application
 
-My next step was to continerize the application. In order to do so, I added a Dockerfile to the prject with the contents below:
+My next step was to containerize the application. In order to do so, I added a Dockerfile to the prject with the contents below:
 
 ```
 # syntax=docker/dockerfile:1
