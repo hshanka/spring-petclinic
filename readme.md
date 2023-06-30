@@ -58,8 +58,8 @@ Now run the container from the image using:
 
 ```
 docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
-(Change 8086 to an avaialble port on your local machine if that port is taken.)
 ```
+(Change 8086 to an avaialble port on your local machine if that port is taken.)
 
 Access http://localhost:8086/ to verify that the application came up successfully. 
 
