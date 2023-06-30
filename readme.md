@@ -1,5 +1,7 @@
 # Hari's Spring PetClinic Application
-This project is a fork of the Spring Petclinic application provided as part of the exercise. This readme describes the changes made to this project in order to meet the exercise requirements. Specifically, the following tasks were accomplished:
+This project is a fork of the Spring Petclinic application provided as part of the exercise. This readme describes the changes made to this project in order to meet the exercise requirements. Also included below are the deliverables for this exercise.
+
+The following tasks were accomplished:
 
 a) Forked Spring-Petclinic project from https://github.com/spring-projects/spring-petclinic
 
