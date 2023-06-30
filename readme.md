@@ -53,6 +53,7 @@ Please see [here.](https://github.com/hshanka/spring-petclinic#4-adding-security
 
 # Description of steps executed to complete the exercise
 
+## 1. Fork and clone project
 Once the application was forked, I cloned the repo locally to build and test the project. I executed. the following commands. todo so:
 
 ```
@@ -67,7 +68,7 @@ java -jar target/*.jar
 
 I verified that the application was available at http://localhost:8080/. 
 
-## 1. Updating repos to point to JCenter:
+## 2. Updating repos to point to JCenter:
 I made the following changes to pom.xml:
 
 ### Removed:
@@ -143,7 +144,7 @@ I made the following changes to pom.xml:
 
 ```
 
-## 2. Containerizing the Spring-Petclinic application
+## 3. Containerizing the Spring-Petclinic application
 
 My next step was to continerize the application. In order to do so, I added a Dockerfile to the prject with the contents below:
 
@@ -183,9 +184,9 @@ During startup, I verified that all dependencies were resolving from JCenter:
 <img width="1155" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/32ac7e1e-02d7-4b94-99d8-e45fe1bbc5bc">
 
 
-## 3. Automation with Jenkins
+## 4. Automation with Jenkins
 
-### 3a. Installing Jenkins
+### 4a. Installing Jenkins
 
 Next, I installed a local Jenkins instance using homebrew:
 
@@ -207,7 +208,7 @@ c) Github
 I configured Maven, Git and Docker and JFrog CLI within Jenkins Tools -> Congigurations.
 
 
-### 3b. Authoring the Jenkinsfile
+### 4b. Authoring the Jenkinsfile
 I created a Jenkinsfile with the following contents:
 ```
 pipeline {
@@ -260,15 +261,15 @@ pipeline {
 ```
 As seen above, the script checks out the code from my repo, compiles, runs the tests and attempts to build the package. If these steps succeed, the script builds a docker image using the Dockerfile I created and placed at the root of the project.
 
-### 3c. Configuring Jenkins And Runnning The Pipeline
+### 4c. Configuring Jenkins And Runnning The Pipeline
 I pushed the updates into Github, and configured my Jenkins pipeline to point to this github project.
 <img width="1211" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/368f5e7c-716d-4505-9aaa-eff63999fb88">
 
 And ran the build manually.
 <img width="1059" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/087e245c-d0e0-4333-b41e-82624af24dac">
 
-## 4. Adding Security to Jenkins Pipeline (Bonus Task)
-#### 4a. Scanning for security vulnerabilities 
+## 5. Adding Security to Jenkins Pipeline (Bonus Task)
+#### 5a. Scanning for security vulnerabilities 
 After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
 
 ```
@@ -289,17 +290,17 @@ The Xray scan results are also available within the Xray section within my JFrog
 
 <img width="1458" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/45bee72d-cf08-41a4-81d4-777664af06a2">
 
-### 4b. Using Jenkins Credentials Management
+### 5b. Using Jenkins Credentials Management
 In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager to store the JF_ACCESS_TOKEN and the Github token.
 <img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
 
-### 4c. Additional approaches to adding security to Jenkins pipeline
+### 5c. Additional approaches to adding security to Jenkins pipeline
 
 1. Enabling the Groovy Sandbox
 2. Using distributed builds
 
 
-## 5. Publishing Docker image to JFrog Artifactory (Bonus Task)
+## 6. Publishing Docker image to JFrog Artifactory (Bonus Task)
 
 Once Xray scans complete, I publish the docker image to Artifactory using,
 ```
@@ -312,7 +313,7 @@ Builds are visible in Artifactory within my JFrog account:
 <img width="1465" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/99e10359-1947-453c-b80c-e983b77992ca">
 
 
-# 7. Issues encountered and resolutions
+# Issues encountered and resolutions
 ### 1. Jenkins server not finding my local docker despite configuring Manage Plugins --> Tools.
 I resolved this by editing 
 ```
@@ -343,7 +344,7 @@ I experienced the following runtime error:
 
 The frogbot pull requests worked file. I ended up removing frogbot from my Jenkinsfile since I was directly running the vulnerability scan using the jf commandline and Xray.
 
-# 8. Real-World Enhancement Ideas
+# Real-World Enhancement Ideas
 
 ### 1. Kick of Jenkins job on code commit
 Instead of kicking off builds manually, we would want to trigger teh Jenkins pipeline oneach code commit.
