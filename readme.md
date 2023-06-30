@@ -13,7 +13,41 @@ e) Added steps to the Jenkinsfile to publish the docker image to Artifactory (bo
 
 f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray (bonus item)
 
+# Deliverables
 
+### 1. Jenkinsfile
+This is available in the root of this repo at: https://github.com/hshanka/spring-petclinic/blob/main/Jenkinsfile
+
+### 2. Dockerfile
+This is available in the root of this repo at: https://github.com/hshanka/spring-petclinic/blob/main/Dockerfile
+
+
+### 3. Runnable Docker image:
+Pull the docker image from Artifactory using:
+```
+docker pull hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9  
+```
+
+Verify that the image pulled successfully using:
+```
+docker images
+```
+You should see it in the list of your local images as seen below:
+<img width="889" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/2604cf63-edef-4b13-95f7-d3363c0f1cd2">
+
+
+Run the container from the image using:
+```
+docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
+(Change 8086 to an avaialble port on your local machine if that port is taken.)
+```
+
+Access http://localhost:8086/ to verify that the application came up successfully. 
+
+<img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
+
+### 4. Recommendations and implementations of security within the pipeline
+Please see [here.](https://github.com/hshanka/spring-petclinic#4-adding-security-to-jenkins-pipeline-bonus-task)
 
 # Detailed description of steps executed to complete the exercise
 
@@ -275,39 +309,6 @@ Builds are visible in Artifactory within my JFrog account:
 
 <img width="1465" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/99e10359-1947-453c-b80c-e983b77992ca">
 
-
-# 6. Deliverables
-
-### 1. Jenkinsfile
-This is available in the root of this repo at: https://github.com/hshanka/spring-petclinic/blob/main/Jenkinsfile
-
-### 2. Dockerfile
-This is available in the root of this repo at: https://github.com/hshanka/spring-petclinic/blob/main/Dockerfile
-
-
-### 3. Runnable Docker image:
-Pull the docker image from Artifactory using:
-```
-docker pull hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9  
-```
-
-Verify that the image pulled successfully using:
-```
-docker images
-```
-You should see it in the list of your local images as seen below:
-<img width="889" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/2604cf63-edef-4b13-95f7-d3363c0f1cd2">
-
-
-Run the container from the image using:
-```
-docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
-(Change 8086 to an avaialble port on your local machine if that port is taken.)
-```
-
-Access http://localhost:8086/ to verify that the application came up successfully. 
-
-<img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
 
 # 7. Issues encountered and resolutions
 ### 1. Jenkins server not finding my local docker despite configuring Manage Plugins --> Tools.
