@@ -48,7 +48,7 @@ Access http://localhost:8086/ to verify that the application came up successfull
 <img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
 
 ### 4. Recommendations and implementations of security within the pipeline
-Please see [here.](https://github.com/hshanka/spring-petclinic#4-adding-security-to-jenkins-pipeline-bonus-task)
+Please see [here.](https://github.com/hshanka/spring-petclinic#5-adding-security-to-jenkins-pipeline-bonus-task)
 
 
 # Description of steps executed to complete the exercise
