@@ -13,6 +13,7 @@ e) Added steps to the Jenkinsfile to publish the docker image to Artifactory (bo
 
 f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray (bonus item)
 
+
 # Deliverables
 
 ### 1. Jenkinsfile
@@ -49,7 +50,8 @@ Access http://localhost:8086/ to verify that the application came up successfull
 ### 4. Recommendations and implementations of security within the pipeline
 Please see [here.](https://github.com/hshanka/spring-petclinic#4-adding-security-to-jenkins-pipeline-bonus-task)
 
-# Detailed description of steps executed to complete the exercise
+
+# Description of steps executed to complete the exercise
 
 Once the application was forked, I cloned the repo locally to build and test the project. I executed. the following commands. todo so:
 
