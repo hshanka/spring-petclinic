@@ -62,7 +62,7 @@ You should see ```hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9``` in the l
 <img width="889" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/2604cf63-edef-4b13-95f7-d3363c0f1cd2">
 
 
-Now run the container from the image using:
+Now run the container:
 
 ```
 docker run --publish 8086:8080 hshanka.jfrog.io/frog-docker/spring-petclinic-hs:9
