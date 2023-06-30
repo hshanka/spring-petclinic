@@ -13,7 +13,7 @@ d) Added a Jenkinsfile to the project to compile the code, run the tests and pac
 
 e) Added steps to the Jenkinsfile to publish the docker image to Artifactory (bonus item)
 
-f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray (bonus item)
+f) Added steps to the Jenkinsfile to run vulnerability scans using JFrog Xray, as well as static code analysis using SonarQube (bonus item)
 
 
 # Deliverables
