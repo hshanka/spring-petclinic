@@ -232,7 +232,7 @@ And ran the build manually.
 <img width="1059" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/087e245c-d0e0-4333-b41e-82624af24dac">
 
 ## Securing the Jenkins Pipeline (Bonus Task)
-### Scanning for security vulnerabilities 
+#### Scanning for security vulnerabilities 
 After the docker image is built, I scan for vulnerabilities using JFrog Xray within the Jenkinsfile using,
 
 ```
