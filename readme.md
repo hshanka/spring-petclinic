@@ -48,7 +48,7 @@ Access http://localhost:8086/ to verify that the application came up successfull
 <img width="1468" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/f94b080f-002f-4748-a518-8e04fbb8fbfe">
 
 ### 4. Recommendations and implementations of security within the pipeline
-Please see [here.](https://github.com/hshanka/spring-petclinic#5-adding-security-to-jenkins-pipeline-bonus-task)
+Please see [here.](https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xseXkofG8vAPbUrTmvsnBY3BLgs4/edit?usp=sharing)
 
 
 # Description of steps executed to complete the exercise
@@ -295,33 +295,7 @@ In order to secure my Jenkins pipeline, I also leveraged the Credentials Manager
 <img width="1467" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/653fb8dd-1981-46fd-b404-5e89f9f8cca7">
 
 ### 5c. Additional approaches to adding security to Jenkins pipeline
-
-1. Enabling the Groovy Sandbox
-   This ensures that only safe operations are run within the pipeline script.
-   <img width="973" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/d768f2d9-ed96-46e7-9c3d-68ef93329b97">
-
-3. Protecting the controller node using distributed builds or the Job Restrictions Plugin
-Distributed builds enable access restriction to the controller filesystem by running builds, and limit the potential for compromising the controller.
-
-Alternatively, the Job Restrictions plugin could be used to limit the jobs run on the controller node.
-<img width="804" alt="image" src="https://github.com/hshanka/spring-petclinic/assets/6666290/637b552a-8261-4070-92b7-131d59df6f8c">
-
-4. Static code analysis with tools like Checkmarx and Polyspace
- <img width="772" alt="Screenshot 2023-06-30 at 7 36 59 AM" src="https://github.com/hshanka/spring-petclinic/assets/6666290/4a60ab24-1a4f-40f0-bb0e-dd1f70a581d7">
-
-<img width="809" alt="Screenshot 2023-06-30 at 7 38 19 AM" src="https://github.com/hshanka/spring-petclinic/assets/6666290/78352f49-aa9f-49c3-a746-1cc8d4900173">
-
-   
-5. Dynamic code analysis with tools like Veracode
-<img width="803" alt="Screenshot 2023-06-30 at 7 40 09 AM" src="https://github.com/hshanka/spring-petclinic/assets/6666290/45bd9afa-9087-46e0-add8-065e71b22fe8">
-
-6. Using the Mask Passwords plugin
-
-<img width="781" alt="Screenshot 2023-06-30 at 7 38 43 AM" src="https://github.com/hshanka/spring-petclinic/assets/6666290/6525cc2d-bb8d-4d63-b10f-b8a4289fc752">
-
-
-7. Check against the OWASP Top 10 using the OWASP dependency check plugin
-   <img width="781" alt="Screenshot 2023-06-30 at 7 38 43 AM" src="https://github.com/hshanka/spring-petclinic/assets/6666290/05198b04-6e4a-4446-a3b6-3d439bf030f9">
+Please see [this deck] (https://docs.google.com/presentation/d/1wsDOpUZpE5hqVn8xseXkofG8vAPbUrTmvsnBY3BLgs4/edit?usp=sharing) for additional approaches that I would implement to further secure this pipeline.
 
 
 ## 6. Publishing Docker image to JFrog Artifactory (Bonus Task)
